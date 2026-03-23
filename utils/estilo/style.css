@@ -1,22 +1,28 @@
 @charset  "UTF-8";
 
-/* ═══════════════════════════════
-   TOKENS DE DESIGN
-═══════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   TOKENS DE DESIGN — CORTE E REDE, LDA
+   Actualização: Cor do mar ajustada para azul-mar tropical
+   (#3AADB9 — fusão de #45858C com #A0D9D9)
+═══════════════════════════════════════════════════════ */
 :root {
-  /* Carne */
+  /* ── Paleta CARNE (tons vermelhos/borgonha) ── */
   --carne-escuro:  #3D0C12;
   --carne-medio:   #6B1E2A;
   --carne-claro:   #9B3A47;
   --carne-suave:   #F2DDD0;
 
-  /* Peixe */
-  --peixe-escuro:  #071C2C;
-  --peixe-medio:   #0D3B4F;
-  --peixe-claro:   #1A6B8A;
-  --peixe-suave:   #D0E8F2;
+  /* ── Paleta PEIXE/MAR (azul-mar tropical — nova cor) ── */
+  /* Escolha técnica: #3AADB9 é a melhor mistura entre        */
+  /* #45858C (profundo) e #A0D9D9 (claro), resultando num     */
+  /* azul-mar vivo, tropical, representativo do oceano angolano */
+  --peixe-escuro:  #062B35;   /* fundo escuro do mar */
+  --peixe-medio:   #0E4F60;   /* mar profundo */
+  --peixe-claro:   #3AADB9;   /* ✅ NOVA COR: superfície do mar tropical */
+  --peixe-suave:   #AAE0E6;   /* espuma / água clara */
+  --peixe-accent:  #A0D9D9;   /* variante clara (original do cliente) */
 
-  /* Neutros */
+  /* ── Neutros ── */
   --creme:   #F8F4ED;
   --branco:  #FDFCFA;
   --ouro:    #C9A84C;
@@ -24,16 +30,16 @@
   --preto:   #0A0A0A;
   --cinza:   #6B6860;
 
-  /* Fontes */
+  /* ── Tipografia ── */
   --f-display: 'Playfair Display', Georgia, serif;
   --f-body:    'Lato', -apple-system, sans-serif;
 
-  /* Layout */
-  --pad: clamp(1.25rem, 5vw, 3rem);
-  --nav-h: 64px;
+  /* ── Layout ── */
+  --pad:    clamp(1.25rem, 5vw, 3rem);
+  --nav-h:  64px;
   --radius: 12px;
 
-  /* Transições */
+  /* ── Transições ── */
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -102,10 +108,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background 0.4s var(--ease), backdrop-filter 0.4s;
 }
 .nav.scrolled {
-  background: rgba(7, 28, 44, 0.92);
+  background: rgba(6, 43, 53, 0.92);   /* usa nova cor --peixe-escuro */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(58, 173, 185, 0.12);  /* borda subtil mar */
 }
 .nav-inner {
   display: flex;
@@ -195,7 +201,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4) !important; }
 
-/* Burger */
+/* Burger nav principal */
 .burger {
   display: flex;
   flex-direction: column;
@@ -268,7 +274,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
 }
 
-/* Metades — empilhadas no mobile, lado a lado no desktop */
 .hero-halves {
   display: flex;
   flex-direction: column;
@@ -298,8 +303,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     radial-gradient(ellipse 80% 60% at 80% 30%, rgba(155,58,71,0.5) 0%, transparent 70%),
     linear-gradient(180deg, transparent 0%, rgba(61,12,18,0.85) 100%);
 }
-
-/* Grade de linhas decorativa — carne */
 .half-carne::after {
   content: '';
   position: absolute;
@@ -311,7 +314,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.5;
 }
 
-/* Metade PEIXE */
+/* Metade PEIXE — usa nova cor do mar */
 .half-peixe {
   background: var(--peixe-escuro);
 }
@@ -320,21 +323,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(26,107,138,0.5) 0%, transparent 70%),
-    linear-gradient(180deg, transparent 0%, rgba(7,28,44,0.85) 100%);
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(58,173,185,0.35) 0%, transparent 70%),
+    linear-gradient(180deg, transparent 0%, rgba(6,43,53,0.88) 100%);
 }
-
-/* Ondas decorativas — peixe */
 .half-peixe::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q25 0 50 10 Q75 20 100 10' fill='none' stroke='rgba(26,107,138,0.12)' stroke-width='1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q25 0 50 10 Q75 20 100 10' fill='none' stroke='rgba(58,173,185,0.12)' stroke-width='1'/%3E%3C/svg%3E");
   background-size: 100px 20px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-/* Ícones SVG decorativos no fundo */
 .hero-deco {
   position: absolute;
   top: 50%;
@@ -344,7 +344,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 0;
 }
 
-/* Conteúdo de cada metade */
 .half-content {
   position: relative;
   z-index: 2;
@@ -390,7 +389,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.6;
 }
 
-/* CENTRO — Logo sobreposto (desktop) */
+/* Centro — logo sobreposto */
 .hero-center {
   position: absolute;
   top: 50%;
@@ -453,7 +452,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--ouro);
 }
 
-/* Scroll indicator hero */
 .hero-scroll {
   position: absolute;
   bottom: 1.5rem;
@@ -540,7 +538,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   overflow: hidden;
 }
-
 .sobre::before {
   content: 'C&R';
   position: absolute;
@@ -603,7 +600,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 1.25rem;
 }
 
-/* Cards de valores */
 .sobre-valores {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -637,7 +633,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.6;
 }
 
-/* Visual decorativo da secção sobre */
 .sobre-visual {
   position: relative;
 }
@@ -703,7 +698,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   bottom: -1rem;
   right: -1rem;
-  background: var(--peixe-medio);
+  background: var(--peixe-medio);      /* usa nova cor do mar */
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
   border: 3px solid var(--creme);
@@ -717,7 +712,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: -0.04em;
   line-height: 1;
 }
-.sca-num em { color: var(--ouro); font-style: normal; font-size: 1rem; }
+.sca-num em { color: var(--peixe-claro); font-style: normal; font-size: 1rem; }
 .sca-label {
   font-size: 0.7rem;
   color: rgba(255,255,255,0.5);
@@ -750,6 +745,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .produtos-titulo em { font-style: italic; color: var(--ouro); }
 
+/* Dica global de interacção */
+.prod-hint-global {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+  margin-top: 0.6rem;
+}
+.hint-icon-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  background: rgba(58,173,185,0.2);
+  border: 1px solid rgba(58,173,185,0.3);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--peixe-claro);
+}
+
 /* Tabs */
 .prod-tabs {
   display: flex;
@@ -774,7 +791,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: #fff;
 }
 .prod-tab.active.peixe {
-  background: var(--peixe-claro);
+  background: var(--peixe-claro);     /* ✅ nova cor do mar */
   border-color: var(--peixe-claro);
   color: #fff;
 }
@@ -798,6 +815,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: var(--radius);
   overflow: hidden;
 }
+
+/* ──────────────────────────────────────
+   PRODUTO ITEM — com hamburger de preços
+────────────────────────────────────── */
 .prod-item {
   background: rgba(255,255,255,0.02);
   padding: 1.5rem;
@@ -805,7 +826,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background 0.3s;
   cursor: default;
 }
-.prod-item:hover { background: rgba(255,255,255,0.05); }
+.prod-item:hover { background: rgba(255,255,255,0.04); }
 
 .prod-item::before {
   content: '';
@@ -818,13 +839,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--carne-claro);
 }
 .prod-panel.active[data-cat="peixe"] .prod-item::before {
-  background: var(--peixe-claro);
+  background: var(--peixe-claro);    /* ✅ nova cor */
 }
 .prod-item:hover::before { width: 100%; }
 
 .prod-emoji {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
+  margin-right: 2.5rem;   /* espaço para o botão hamburger */
 }
 .prod-nome {
   font-family: var(--f-display);
@@ -832,6 +854,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   color: #fff;
   margin-bottom: 0.4rem;
+  padding-right: 2.5rem;  /* evita sobreposição com o toggle */
 }
 .prod-desc {
   font-size: 0.78rem;
@@ -864,6 +887,210 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid rgba(232,136,136,0.2);
 }
 
+/* ══════════════════════════════════════
+   BOTÃO HAMBURGER DE PREÇOS (prod-toggle)
+   Cada card tem o seu próprio mini-burger
+════════════════════════════════════════ */
+.prod-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 8px 5px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    transform 0.2s;
+  z-index: 2;
+  min-width: 38px;
+}
+.prod-toggle:hover {
+  background: rgba(58,173,185,0.15);
+  border-color: rgba(58,173,185,0.4);
+  transform: scale(1.05);
+}
+/* Quando aberto — fundo dourado subtil */
+.prod-toggle.open {
+  background: rgba(201,168,76,0.12);
+  border-color: rgba(201,168,76,0.4);
+}
+
+/* As 3 linhas do hamburger */
+.prod-toggle span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 2px;
+  transition:
+    transform 0.35s var(--ease),
+    opacity 0.25s,
+    background 0.2s;
+}
+.prod-toggle:hover span {
+  background: var(--peixe-claro);   /* ✅ azul-mar no hover */
+}
+.prod-toggle.open span {
+  background: var(--ouro);
+}
+/* Transformação: 3 linhas → X */
+.prod-toggle.open span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.prod-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.prod-toggle.open span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+/* Label "preços" abaixo das linhas */
+.prod-toggle-label {
+  font-size: 0.42rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  font-style: normal;
+  transition: color 0.2s, opacity 0.25s;
+  line-height: 1;
+}
+.prod-toggle:hover .prod-toggle-label {
+  color: var(--peixe-claro);
+}
+.prod-toggle.open .prod-toggle-label {
+  opacity: 0;
+  transform: scaleY(0);
+  height: 0;
+  overflow: hidden;
+  margin-top: -4px;
+}
+
+/* ══════════════════════════════════════
+   MENU DE PREÇOS — expansível (prod-menu)
+   Animação: slide-down suave com opacity
+════════════════════════════════════════ */
+.prod-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.4s var(--ease),
+    margin-top 0.3s;
+  margin-top: 0;
+}
+.prod-menu.open {
+  max-height: 700px;   /* valor grande suficiente para qualquer lista */
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+/* Título do menu de preços */
+.prod-menu-titulo {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  padding: 0.8rem 0 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.prod-menu-titulo::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
+}
+
+/* Lista de cortes */
+.prod-cortes {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Linha de cada corte */
+.prod-corte {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.42rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+  border-radius: 4px;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  margin: 0 -0.3rem;
+}
+.prod-corte:hover {
+  background: rgba(255,255,255,0.03);
+}
+.prod-corte:last-child {
+  border-bottom: none;
+}
+
+/* Nome do corte */
+.corte-nome {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Preço do corte */
+.corte-preco {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ouro);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Preço "a consultar" — estilo diferente */
+.corte-preco-consulta {
+  color: var(--peixe-claro);          /* ✅ azul-mar */
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Linha de destaque (ex: carne seca) */
+.corte-destaque .corte-nome {
+  color: rgba(255,255,255,0.45);
+}
+.corte-destaque .corte-preco {
+  color: rgba(201,168,76,0.75);
+}
+
+/* Linha de consulta (ex: chouriço) */
+.corte-consulta-row .corte-nome {
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
+/* Nota de rodapé do menu */
+.prod-menu-nota {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.25);
+  padding: 0.6rem 0 0.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
 /* ═══════════════════════════════
    PÚBLICO ALVO (2 painéis)
 ═══════════════════════════════ */
@@ -879,7 +1106,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .pub-carne { background: var(--carne-suave); }
-.pub-peixe { background: var(--peixe-suave); }
+.pub-peixe { background: var(--peixe-suave); }  /* ✅ nova cor suave do mar */
 
 .pub-num {
   font-family: var(--f-display);
@@ -901,7 +1128,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 0.75rem;
 }
 .pub-carne .pub-label { color: var(--carne-medio); }
-.pub-peixe .pub-label { color: var(--peixe-claro); }
+.pub-peixe .pub-label { color: var(--peixe-claro); }    /* ✅ nova cor */
 
 .pub-titulo {
   font-family: var(--f-display);
@@ -921,7 +1148,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 480px;
 }
 .pub-carne .pub-texto { color: rgba(61,12,18,0.65); }
-.pub-peixe .pub-texto { color: rgba(7,28,44,0.65); }
+.pub-peixe .pub-texto { color: rgba(6,43,53,0.65); }
 
 .pub-lista {
   display: flex;
@@ -944,7 +1171,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-shrink: 0;
 }
 .pub-carne .pub-lista li::before { background: var(--carne-medio); }
-.pub-peixe .pub-lista li::before { background: var(--peixe-claro); }
+.pub-peixe .pub-lista li::before { background: var(--peixe-claro); }    /* ✅ nova cor */
 
 /* ═══════════════════════════════
    ENCOMENDAS / CONTACTO
@@ -1001,7 +1228,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-right: auto;
 }
 
-/* Canais de contacto */
 .contacto-canais {
   display: flex;
   flex-wrap: wrap;
@@ -1039,13 +1265,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-3px);
 }
 .canal-email {
-  background: rgba(201,168,76,0.12);
-  color: var(--ouro);
-  border: 1px solid rgba(201,168,76,0.25);
+  background: rgba(58,173,185,0.12);    /* ✅ azul-mar no fundo */
+  color: var(--peixe-claro);
+  border: 1px solid rgba(58,173,185,0.3);
 }
 .canal-email:hover {
-  background: rgba(201,168,76,0.2);
+  background: rgba(58,173,185,0.22);
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(58,173,185,0.2);
 }
 
 /* Horário */
@@ -1139,8 +1366,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all 0.3s;
 }
 .loc-cta:hover {
-  background: var(--carne-medio);
+  background: var(--peixe-claro);    /* ✅ azul-mar no hover */
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58,173,185,0.3);
 }
 
 /* ═══════════════════════════════

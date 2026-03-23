@@ -1,42 +1,113 @@
-@charset  "UTF-8";
+@charset "UTF-8";
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════
    RESPONSIVO — TABLET (≥ 768px)
-═══════════════════════════════ */
-@media (min-width: 768px) and (max-width: 992px) {
+   Correcção: fecho da media query em falta
+═══════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 991px) {
   .hero-halves { flex-direction: row; }
   .hero-half { align-items: flex-end; padding: 3rem var(--pad); }
 
   .sobre-valores { grid-template-columns: repeat(2, 1fr); }
-  .prod-grid { grid-template-columns: repeat(3, 1fr); }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); }
   .publico { grid-template-columns: 1fr 1fr; }
+
   .hero-center {
     position: absolute;
-    top: 1%;
-    left: 36%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
     text-align: center;
     animation: scaleIn 1s 0.5s var(--ease) both;
+  }
 }
 
-/* ═══════════════════════════════
-   RESPONSIVO — DESKTOP (≥ 1024px)
-═══════════════════════════════ */
-@media (min-width: 992px) and (max-width: 1200px) {
+/* ═══════════════════════════════════════
+   RESPONSIVO — DESKTOP (≥ 992px)
+═══════════════════════════════════════ */
+@media (min-width: 992px) {
+  /* Navegação */
   .nav-links { display: flex; }
-  .nav-cta { display: inline-flex; }
-  .burger { display: none; }
+  .nav-cta   { display: inline-flex; }
+  .burger    { display: none; }
 
+  /* Hero em duas colunas */
+  .hero-halves { flex-direction: row; }
+  .hero-half   { align-items: flex-end; padding: 4rem var(--pad); }
+
+  /* Sobre */
   .sobre-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem; }
+
+  /* Produtos — 4 colunas no desktop */
   .prod-grid { grid-template-columns: repeat(4, 1fr); }
 
-    .publico { grid-template-columns: repeat(3, 1fr); }
+  /* Público alvo — 2 colunas */
+  .publico { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════════════
+   RESPONSIVO — GRANDE (≥ 1200px)
+═══════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .sobre-valores { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST — ajustes específicos
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Prod-grid em 1 coluna no mobile pequeno */
+  .prod-grid { grid-template-columns: 1fr; }
+
+  /* Canais de contacto em coluna */
+  .contacto-canais { flex-direction: column; align-items: center; }
+  .canal-btn { width: 100%; justify-content: center; max-width: 320px; }
+
+  /* Strip em coluna */
+  .strip-sep { display: none; }
+  .strip-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+  /* Sobre-valores em 1 coluna */
+  .sobre-valores { grid-template-columns: 1fr; }
+
+  /* Horário sem min-width */
+  .horario-card { min-width: unset; width: 100%; }
+
+  /* Sobre-card-accent reposicionado */
+  .sobre-card-accent {
+    position: static;
+    margin-top: 1.5rem;
+    border: none;
+  }
+}
+
+/* ═══════════════════════════════════════
+   PROD-ITEM: ajustes responsive do menu
+═══════════════════════════════════════ */
+@media (min-width: 992px) {
+  /* No desktop, 4 colunas — menu ocupa toda a largura do card */
+  .prod-menu.open {
+    max-height: 800px;
+  }
+  /* Nome do corte pode ter menos espaço — truncar se necessário */
+  .corte-nome {
+    font-size: 0.72rem;
+  }
+  .corte-preco {
+    font-size: 0.68rem;
+  }
+}
+
+/* ═══════════════════════════════════════
    UTILITÁRIO: SCROLL BAR
-═══════════════════════════════ */
+═══════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--preto); }
-::-webkit-scrollbar-thumb { background: var(--carne-medio); border-radius: 3px; }}
+::-webkit-scrollbar-thumb {
+  background: var(--peixe-claro);   /* ✅ nova cor do mar na scrollbar */
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ouro);
+}
